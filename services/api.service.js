@@ -2,8 +2,9 @@ import axios from 'axios'
 import { getKeyValue, DICTIONARY } from './storage.service.js'
 
 const token = await getKeyValue(DICTIONARY.token)
+const city = await getKeyValue(DICTIONARY.city)
 
-const getWeather = async (city) => {
+const getWeather = async () => {
     
     if (!token) {
         throw new Error('Token is not defined, you can do that using -t [API_KEY] command')

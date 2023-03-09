@@ -35,9 +35,12 @@ const saveCity = async (city) => {
 
 const getForecast = async () => {
     try {
-        const weather = await getWeather('Lipetsk')
+        const weather = await getWeather()
         const weatherData = await getWeatherData(weather['lat'], weather['lon'])
-        console.log(weatherData)
+        const weatherString = `It's ${weatherData['weather']} today in ${weatherData['city']}.
+        Temperature is ${weatherData['temperature']} degrees Celsius and it feels like ${weatherData['feels_like']}.
+        Wind speed is ${weatherData['wind_speed']} meters per second`
+        console.log(weatherString)
     } catch (error) {
         printError(error.message)
     }
